@@ -3,7 +3,7 @@ import sys
 import boto3
 from botocore.exceptions import ClientError
 
-BUCKET_NAME = "ml-iris-model-CHANGEME"   # <-- your bucket name
+BUCKET_NAME = "ml-iris-model-mohib"   # <-- your bucket name
 MODEL_FILE = "iris_model.pkl"
 
 s3 = boto3.client("s3")
