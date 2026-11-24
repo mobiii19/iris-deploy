@@ -5,15 +5,16 @@ Credentials are never written here: boto3 picks up the EC2
 instance's IAM role automatically.
 """
 import os
+import tempfile          # <- add this line
 
 import boto3
 import joblib
 from botocore.exceptions import ClientError
 from flask import Flask, jsonify, request
 
-BUCKET_NAME = os.environ.get("MODEL_BUCKET", "ml-iris-model-CHANGEME")
+BUCKET_NAME = os.environ.get("MODEL_BUCKET", "ml-iris-model-mohib")
 MODEL_KEY = os.environ.get("MODEL_KEY", "iris_model.pkl")
-LOCAL_PATH = "/tmp/iris_model.pkl"
+LOCAL_PATH = os.path.join(tempfile.gettempdir(), "iris_model.pkl")
 
 CLASS_NAMES = ["setosa", "versicolor", "virginica"]
 
